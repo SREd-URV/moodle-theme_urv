@@ -77,4 +77,3 @@ $string['secondarybackground'] = 'Color de fons secundari';
 $string['secondarybackground_desc'] = 'El color de fons de qualsevol contingut secundari, com ara blocs.';
 $string['textcolor'] = 'Color de text';
 $string['textcolor_desc'] = 'El color del text.';
-

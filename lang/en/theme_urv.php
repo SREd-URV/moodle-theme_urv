@@ -77,4 +77,3 @@ $string['secondarybackground'] = 'Secondary background colour';
 $string['secondarybackground_desc'] = 'The background colour of any secondary content, such as blocks.';
 $string['textcolor'] = 'Text colour';
 $string['textcolor_desc'] = 'The colour of the text.';
-
