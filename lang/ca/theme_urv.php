@@ -44,8 +44,31 @@ $string['backgroundrepeatnorepeat'] = 'Sense repetició';
 $string['backgroundrepeatrepeat'] = 'Repetir';
 $string['backgroundrepeatrepeatx'] = 'Repetir horitzontalment';
 $string['backgroundrepeatrepeaty'] = 'Repetir verticalment';
+$string['baselogo'] = 'Logo de base';
+$string['baselogodesc'] = 'Imatge a emprar com a base per als logos de les categories. El text personalitzat s\'hi escriurà a sobre.';
+$string['baselogotextcolor'] = 'Color del text';
+$string['baselogotextcolordesc'] = 'Color del text que s\'imprimirà sobre la imatge base.';
+$string['baselogotextsize'] = 'Mida del text';
+$string['baselogotextsizedesc'] = 'Mida del text que s\'imprimirà sobre la imatge base.';
 $string['bodybackground'] = 'Color de fons';
 $string['bodybackground_desc'] = 'El color principal de fons.';
+$string['categoriesconfig'] = 'Personalització dels logos de les categories de cursos';
+$string['categoriesconfigdesc'] = 'A sota trobaràs els elements necessaris per personalitzar els logos de les categories de cursos.'
+    . ' Els logos personalitzats es generen a partir d\'una imatge base i un text que s\'hi imprimeix a sobre.'
+    . ' El text consisteix en la descripció de la categoria (si existeix) o bé el seu títol.'
+    . ' Si un curs o apartat no apareix sota cap categoria amb personalització de logo, s\'emprarà el logo del tema.'
+    . ' Per tant, per personalitzar els logos de les categories només cal fer el següent:'
+    . ' <ol>'
+    . ' <li>Pujar una imatge base per als logos.</li>'
+    . ' <li>Personalitzar el color del text i la seva posició i rotació dins de la imatge base.</li>'
+    . ' <li>Seleccionar les categories de cursos de les que volem veure un logo personalitzat.'
+    . ' Per personalitzar el logo, hem d\'escriure un text breu a la descripció de la categoria. Altrament s\'usarà el seu títol.</li>'
+    . ' </ol>'
+    . ' Hem de tenir en compte que quan es guardi aquesta configuració es regeneraran TOTS els logos sempre que sigui necessari.';
+$string['categorieswithcustomizedlogo'] = 'Categories a personalitzar';
+$string['categorieswithcustomizedlogodesc'] = 'Aquest és el llistat de categories de cursos que tindran un logo personalitzat.'
+    . ' És altament recomanable només seleccionar una sola categoria mentres es va definint el color, posició i rotació del text a imprimir-hi.'
+    . ' Una vegada estigui ben definit, aleshores sí podrem seleccionar totes les categories desitjades.';
 $string['choosereadme'] = '<p>URV és un tema basat en el More.</p>';
 
 $string['configtitle'] = 'URV';
@@ -55,6 +78,8 @@ $string['contentbackground_desc'] = 'Color de fons per la zona del contingut pri
 $string['customcss'] = 'CSS personalitzat';
 $string['customcssdesc'] = 'Qualsevol regla CSS que hi incorporis es veruà aplicada a cada pàgina, personalitzant aquest tema';
 
+$string['fonttype'] = 'Tipus de font';
+$string['fonttypedesc'] = 'Pots indicar el tipus de font a emprar quan s\'imprimeixi el text sobre la imatge base.';
 $string['footnote'] = 'Nota al peu de pàgina';
 $string['footnotedesc'] = 'El que incorporis aquí es veruà al peu de pàgina a tota pàgina de Moodle';
 
@@ -73,7 +98,17 @@ $string['pluginname'] = 'URV';
 $string['region-side-post'] = 'Dreta';
 $string['region-side-pre'] = 'Esquerra';
 $string['region-side-content'] = 'Centrat';
+$string['rotation'] = 'Rotació del text';
+$string['rotationdesc'] = 'Aquesta és la rotació del text (en grau) quan s\'imprimeixi sobre la imatge base.';
 $string['secondarybackground'] = 'Color de fons secundari';
 $string['secondarybackground_desc'] = 'El color de fons de qualsevol contingut secundari, com ara blocs.';
 $string['textcolor'] = 'Color de text';
 $string['textcolor_desc'] = 'El color del text.';
+
+$string['xposition'] = 'Posició X';
+$string['xpositiondesc'] = 'Posició a l\'eix X on el text començarà a escriure\'s sobre la imatge base (d\'esquerra a dreta).';
+$string['yposition'] = 'Posició Y';
+$string['ypositiondesc'] = 'Posició a l\'eix Y on el text començarà a escriure\'s sobre la imatge base (de dalt a baix).';
+
+$string['categorylogos'] = 'Logos generats per les categories';
+$string['categorylogosdesc'] = 'Aquests són els logos generats automàticament per les categories seleccionades. <strong>Es mostren aquí només per consulta.</strong>';

@@ -26,7 +26,7 @@
  */
 
 // Get the HTML for the settings bits.
-$html = theme_clean_get_html_for_settings($OUTPUT, $PAGE);
+$html = theme_urv_get_html_for_settings($OUTPUT, $PAGE);
 
 if (right_to_left()) {
     $regionbsid = 'region-bs-main-and-post';

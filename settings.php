@@ -166,4 +166,94 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
+
+    // Categories
+    $settings->add(new admin_setting_heading(
+            'theme_urv/categoriesheader',
+            get_string('categoriesconfig', 'theme_urv'),
+            get_string('categoriesconfigdesc', 'theme_urv')
+    ));
+
+    // font type
+    $name = 'theme_urv/fonttype';
+    $title = get_string('fonttype','theme_urv');
+    $description = get_string('fonttypedesc', 'theme_urv');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'fonttype');
+    $setting->set_updatedcallback('theme_urv_build_category_logos');
+    $settings->add($setting);
+
+    // x position for new text
+    $name = 'theme_urv/xposition';
+    $title = get_string('xposition','theme_urv');
+    $description = get_string('xpositiondesc', 'theme_urv');
+    $setting = new admin_setting_configtext($name, $title, $description, 0, PARAM_INT);
+    $setting->set_updatedcallback('theme_urv_build_category_logos');
+    $settings->add($setting);
+
+    // Y position for new text
+    $name = 'theme_urv/yposition';
+    $title = get_string('yposition','theme_urv');
+    $description = get_string('ypositiondesc', 'theme_urv');
+    $setting = new admin_setting_configtext($name, $title, $description, 0, PARAM_INT);
+    $setting->set_updatedcallback('theme_urv_build_category_logos');
+    $settings->add($setting);
+
+    // rotation degrees
+    $name = 'theme_urv/rotation';
+    $title = get_string('rotation','theme_urv');
+    $description = get_string('rotationdesc', 'theme_urv');
+    $setting = new admin_setting_configtext($name, $title, $description, 0, PARAM_INT);
+    $setting->set_updatedcallback('theme_urv_build_category_logos');
+    $settings->add($setting);
+
+    // base logo
+    $name = 'theme_urv/baselogo';
+    $title = get_string('baselogo','theme_urv');
+    $description = get_string('baselogodesc', 'theme_urv');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'baselogo');
+    $setting->set_updatedcallback('theme_urv_build_category_logos');
+    $settings->add($setting);
+
+    // text color.
+    $name = 'theme_urv/baselogotextcolor';
+    $title = get_string('baselogotextcolor', 'theme_urv');
+    $description = get_string('baselogotextcolordesc', 'theme_urv');
+    $default = '#00000';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_urv_build_category_logos');
+    $settings->add($setting);
+
+    // text size.
+    $name = 'theme_urv/baselogotextsize';
+    $title = get_string('baselogotextsize', 'theme_urv');
+    $description = get_string('baselogotextsizedesc', 'theme_urv');
+    $setting = new admin_setting_configtext($name, $title, $description, 18, PARAM_INT);
+    $setting->set_updatedcallback('theme_urv_build_category_logos');
+    $settings->add($setting);
+
+    // list of categories with customized logos
+    require_once $CFG->libdir . '/coursecatlib.php';
+    $catlist = \coursecat::make_categories_list();
+    $symbol = '\\__';
+    foreach ($catlist as $key => &$catname) {
+        $parts = explode('/', $catname);
+        $last = count($parts) - 1;
+        $catname = str_repeat($symbol, $last) . $parts[$last];
+    }
+
+    $name = 'theme_urv/categorieswithcustomizedlogo';
+    $title = get_string('categorieswithcustomizedlogo', 'theme_urv');
+    $description = get_string('categorieswithcustomizedlogodesc', 'theme_urv');
+    $setting = new admin_setting_configmultiselect($name, $title, $description, array(), $catlist);
+    $setting->set_updatedcallback('theme_urv_build_category_logos');
+    $settings->add($setting);
+
+    // automatically generated logos
+    $name = 'theme_urv/categorylogos';
+    $title = get_string('categorylogos','theme_urv');
+    $description = get_string('categorylogosdesc', 'theme_urv');
+    require_once $CFG->dirroot . '/theme/urv/lib.php';
+    $logos = theme_urv_get_html_for_all_logos();
+    $setting = new admin_setting_heading($name, $title, $description . $logos);
+    $settings->add($setting);
 }
