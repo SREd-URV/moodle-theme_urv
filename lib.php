@@ -163,7 +163,7 @@ function theme_urv_get_html_for_logo(renderer_base $output, moodle_page $page)
     // 1. check if we are in the front page. Then, use default logo.
     $currentcatids = $page->categories; //lazy evaluation: get them in memory
     if (empty($currentcatids)) {
-        return html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo')) . 'default';
+        return html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
     }
 
     // 2. otherwise, look for the deepest category with customized logo.
@@ -176,13 +176,13 @@ function theme_urv_get_html_for_logo(renderer_base $output, moodle_page $page)
     }
     // 2.1. none was matched: then, we will show the default logo.
     if (false === $catfound) {
-        return html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo')) . 'none';
+        return html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
     }
 
     // 2.2. we have found a category with customized logo
     $overrideclass = 'logo' . $catfound->id;
     return html_writer::link($CFG->wwwroot, '',
-            array('title' => get_string('home'), 'class' => 'logo ' . $overrideclass)) . 'override' . $catfound->id;
+            array('title' => get_string('home'), 'class' => 'logo ' . $overrideclass));
 }
 
 /**
@@ -194,11 +194,12 @@ function theme_urv_get_html_for_all_logos()
     global $CFG, $DB, $OUTPUT;
 
     $theme = theme_config::load('urv');
-    $customizedcategories = $theme->settings->categorieswithcustomizedlogo;
-    if (empty($customizedcategories)) {
+
+    if (empty($theme->settings->categorieswithcustomizedlogo)) {
         return get_string('nologos', 'theme_urv');
     }
 
+    $customizedcategories = $theme->settings->categorieswithcustomizedlogo;
     $table = new html_table();
     $table->head = array(get_string('currentimage', 'badges'), get_string('name'), get_string('description'));
     $rows = array();
@@ -245,10 +246,17 @@ function theme_urv_build_category_logos()
     $args = new stdClass();
     $args->component = 'theme_urv';
 
-    $catlist = theme_urv_get_category_list($PAGE->theme->settings->categorieswithcustomizedlogo);
+    // get settings from DB, since $PAGE->theme->settings is cached and outdated.
+    $settings = get_config('theme_urv');
+
+    if (empty($settings->categorieswithcustomizedlogo)) {
+        return;
+    }
+
+    $catlist = theme_urv_get_category_list($settings->categorieswithcustomizedlogo);
 
     foreach ($catlist as $cat) {
-        theme_urv_store_customized_logo($args, $fs, $PAGE->theme->settings, $cat);
+        theme_urv_store_customized_logo($args, $fs, $settings, $cat);
     }
 }
 

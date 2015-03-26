@@ -254,6 +254,6 @@ if ($ADMIN->fulltree) {
     $description = get_string('categorylogosdesc', 'theme_urv');
     require_once $CFG->dirroot . '/theme/urv/lib.php';
     $logos = theme_urv_get_html_for_all_logos();
-    $setting = new admin_setting_heading($name, $title, $description . $logos);
+    $setting = new admin_setting_heading($name, $title, $description . '<br><br>' . $logos);
     $settings->add($setting);
 }

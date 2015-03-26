@@ -112,3 +112,4 @@ $string['ypositiondesc'] = 'Posició a l\'eix Y on el text començarà a escriur
 
 $string['categorylogos'] = 'Logos generats per les categories';
 $string['categorylogosdesc'] = 'Aquests són els logos generats automàticament per les categories seleccionades. <strong>Es mostren aquí només per consulta.</strong>';
+$string['nologos'] = 'No hi ha logos a mostrar, ja que no heu escollit personalitzar cap categoria de cursos.';
