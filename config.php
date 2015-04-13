@@ -27,7 +27,7 @@ $THEME->name = 'urv';
 $THEME->parents = array('more', 'clean', 'bootstrapbase');
 
 $THEME->doctype = 'html5';
-$THEME->sheets = array('urv', 'custom', 'core');
+$THEME->sheets = array();
 $THEME->lessfile = 'moodle';
 $THEME->parents_exclude_sheets = array('bootstrapbase' => array('moodle'), 'clean' => array('custom'));
 $THEME->lessvariablescallback = 'theme_more_less_variables';
